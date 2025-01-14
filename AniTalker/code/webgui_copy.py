@@ -44,7 +44,7 @@ app = Flask(__name__,static_folder='static')
 
 # CORS(app)
 CORS(app, resources={r"/api/*": {"origins": "http://127.0.0.1:5000"}})
-openai.api_key = "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"
+openai.api_key = "Your_Api_Key"
 def getResponseFromGPT(text:str)->str:
     return openai.ChatCompletion.create(
         model="gpt-4o",  # 使用正確的 ChatCompletion 端點
