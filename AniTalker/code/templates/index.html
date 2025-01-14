@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/styles.css">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <title>Document</title>
+</head>
+<body>
+    <div class="app">
+        <div class="container">
+            <label class="title" for="#"> <b> AniTalker </b></label>
+            <div class="flex justify-center">
+                <div class="box">
+                    <video src="" id="video"></video>
+                    <img src="../static/images/aiface2.png" alt="#">
+                </div>
+                <div class="box">
+                    <textarea name="" id="res"></textarea>
+                </div>
+                <input type="file" name="" id="uploadimg" style="display: none;" >
+            </div>
+            <div class="flex justify-space" style="width: 30%;margin:20px auto;">
+                <input type="button" id="startTalk" class="btn btn-success" value="開始錄音" />
+                <input type="button" id="stopTalk" class="btn btn-danger" value="停止錄音" />
+                <input type="button" id="submit" class="btn btn-primary" value="送出對話" />
+            </div>
+            <div class="flex justify-center">
+                <textarea name="talked" id="talked" class="box" readonly></textarea>
+            </div>
+        </div>
+    </div>
+    <script src="../static/index.js"></script>
+</body>
+</html>
