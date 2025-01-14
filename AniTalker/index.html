@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI口說英語</title>
+</head>
+<body>
+    <h1>AI口說英語</h1>
+
+    <!-- 上方文字框 -->
+    <textarea id="inputText" rows="5" cols="50" placeholder="請在此輸入文字..."></textarea>
+
+    <!-- 按鈕區域 -->
+    <div>
+        <button id="startBtn">開始錄音</button>
+        <button id="stopBtn" disabled>停止錄音</button>
+        <button id="sendToBackend">輸出到後端</button>
+    </div>
+
+    <!-- 下方文字框 -->
+    <textarea id="outputText" rows="5" cols="50" readonly></textarea>
+
+    <!-- 播放語音播放器 -->
+    <audio id="audioPlayer" controls style="display: none;"></audio>
+
+    <script>
+        const startBtn = document.getElementById("startBtn");
+        const stopBtn = document.getElementById("stopBtn");
+        const sendToBackend = document.getElementById("sendToBackend");
+        const inputText = document.getElementById("inputText");
+        const outputText = document.getElementById("outputText");
+        const audioPlayer = document.getElementById("audioPlayer");
+
+        // SpeechRecognition 設定
+        const recognition = new (window.SpeechRecognition || window.webkitSpeechRecognition)();
+        recognition.lang = 'en-US';
+        recognition.interimResults = true;
+
+        recognition.onresult = (event) => {
+            let transcript = '';
+            for (let i = event.resultIndex; i < event.results.length; i++) {
+                transcript += event.results[i][0].transcript;
+            }
+            outputText.value = transcript; // 修正：將結果輸出到下方文字框
+        };
+
+        startBtn.addEventListener("click", () => {
+            recognition.start();
+            startBtn.disabled = true;
+            stopBtn.disabled = false;
+        });
+
+        stopBtn.addEventListener("click", () => {
+            recognition.stop();
+            startBtn.disabled = false;
+            stopBtn.disabled = true;
+        });
+
+        sendToBackend.addEventListener("click", () => {
+            const text = outputText.value; // 下方文字框的內容
+            if (!text.trim()) {
+                alert("文字框為空，請輸入或錄音後再發送！");
+                return;
+            }
+
+            fetch("http://127.0.0.1:5000/api/check", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ user_input: text })
+            })
+            .then(res => {
+                if (!res.ok) {
+                    throw new Error(`伺服器回應錯誤，狀態碼：${res.status}`);
+                }
+                return res.json();
+            })
+            .then(data => {
+                if (data.error) {
+                    alert("錯誤：" + data.error);
+                } else {
+                    // 更新上方文字框並播放語音
+                    inputText.value = data.grammar_check;
+                    audioPlayer.src = `http://127.0.0.1:5000${data.audio_url}`;
+                    audioPlayer.style.display = "block";
+                    audioPlayer.play();
+                }
+            })
+            .catch(error => {
+                console.error("發送到後端失敗：", error);
+                alert("發送失敗，請檢查伺服器連線！" + error.message);
+            });
+        });
+
+
+        recognition.onerror = (event) => {
+            console.error("語音識別錯誤: ", event.error);
+            alert("語音識別發生錯誤: " + event.error);
+        };
+    </script>
+</body>
+</html>
