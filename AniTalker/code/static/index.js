@@ -4,9 +4,11 @@ $(document).ready(function() {
     $('#submit').on('click', submitTalk);
     $('.box img').on('click', uploadimg);
     $('input[type=file]').on('change', setImg);
-    let showimg = "../static/images/aiface1.png"
-    let defaultimg = "./aiface1.png"
+    let showimg = "../static/images/aiface2.png"
+    let defaultimg = "./aiface2.png"
     $('.box img').attr("src",showimg);
+    $('.box video').hide();
+
     let recognition;
     let isRecording = false;
     
