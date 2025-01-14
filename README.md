@@ -18,7 +18,7 @@ windows版本：
 cd .venv
 cd Scripts
 activate
-cd ..
+cd ../..
 ```
 ### 2.更新pip：
  ``` bash
