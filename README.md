@@ -5,15 +5,20 @@
 git clone https://github.com/ChasDi/Speak_Docker.git
 ```
 ### 1.激活虛擬環境：
+1-1.建立虛擬環境
+``` bash
+python -m venv .venv
+```
 mac版本：
 ``` bash
-source .env/bin/activate 
+source .venv/bin/activate 
 ```
 windows版本：
 ``` bash
+cd .venv
 cd Scripts
 activate
-cd ..
+cd ../..
 ```
 ### 2.更新pip：
  ``` bash
