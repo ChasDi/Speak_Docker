@@ -15,6 +15,7 @@ source .venv/bin/activate
 ```
 windows版本：
 ``` bash
+cd .venv
 cd Scripts
 activate
 cd ..
