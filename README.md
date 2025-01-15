@@ -3,11 +3,19 @@
 ## Python版本＝3.9.0
 
 ## Docker
-1.構建映像檔並啟動Docker
+### 方法一：構建映像檔並啟動Docker
 ```bsah
 docker compose up --build
 ```
-2.
+### 方法二：
+#### 2-1構建映像檔
+```bash
+docker build -t 
+```
+#### 2-2啟動docker
+```bash
+
+```
 ### 本地構建
 ### 使用git clone方式將檔案拉到桌面
 ```bash
