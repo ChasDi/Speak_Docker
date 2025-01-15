@@ -1,5 +1,11 @@
 # Speak_Docker
 ## Python版本＝3.9.0
+### Docker
+1.構建映像檔並啟動Docker
+```bsah
+docker compose up --build
+```
+### 本地構建
 ### 使用git clone方式將檔案拉到桌面
 ```bash
 git clone https://github.com/ChasDi/Speak_Docker.git
@@ -28,6 +34,7 @@ pip python -m pip install --upgrade pip
 ``` bash
 pip install -r requirements.txt
 ```
+
 ### 4.構建映像檔並啟動Docker：
 ``` bash
 docker compose up --build
