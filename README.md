@@ -36,3 +36,7 @@ pip install --upgrade pip
 ``` bash
 pip install -r requirements.txt
 ```
+### 4.執行：
+```bash
+python ./AniTalker/code/webgui_copy.py
+```
