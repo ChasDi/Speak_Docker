@@ -7,6 +7,7 @@
 ```bsah
 docker compose up --build
 ```
+2.
 ### 本地構建
 ### 使用git clone方式將檔案拉到桌面
 ```bash
