@@ -1,6 +1,6 @@
 # Speak_Docker
 ## Python版本＝3.9.0
-### Docker
+## Docker
 1.構建映像檔並啟動Docker
 ```bsah
 docker compose up --build
@@ -28,14 +28,9 @@ cd ../..
 ```
 ### 2.更新pip：
  ``` bash
-pip python -m pip install --upgrade pip
+pip install --upgrade pip
 ```
 ### 3.下載依賴檔：
 ``` bash
 pip install -r requirements.txt
-```
-
-### 4.構建映像檔並啟動Docker：
-``` bash
-docker compose up --build
 ```
