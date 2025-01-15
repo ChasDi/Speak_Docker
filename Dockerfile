@@ -19,7 +19,7 @@ COPY . /app
 RUN pip install --no-cache-dir -r requirements.txt
 
 # Expose the port the app runs on
-EXPOSE 6000
+EXPOSE 5000
 
 # Run the application
 CMD ["python", "./AniTalker/code/webgui_copy.py"]
