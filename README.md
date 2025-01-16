@@ -16,11 +16,11 @@ docker compose up --build
 ### 方法二：
 #### 2-1構建映像檔
 ```bash
-docker build -t 
+docker build -t anitalker .
 ```
 #### 2-2啟動docker
 ```bash
-
+docker run -p 5000:5000 anitalker
 ```
 ### 本地構建
 ### 使用git clone方式將檔案拉到桌面
