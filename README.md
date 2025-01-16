@@ -1,6 +1,5 @@
 # Speak_Docker
-
-## Python版本＝3.9.0
+本次是使用Python 3.9.0 開發的口說教學助理
 
 ## Docker
 ### 方法一：構建映像檔並啟動Docker
@@ -32,10 +31,7 @@ source .venv/bin/activate
 ```
 windows版本：
 ``` bash
-cd .venv
-cd Scripts
-activate
-cd ../..
+.venv/Scripts/activate
 ```
 ### 2.更新pip：
  ``` bash
