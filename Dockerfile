@@ -18,7 +18,6 @@ COPY . /app
 # 更新 pip
 RUN pip install --no-cache-dir --upgrade pip
 
-
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
