@@ -1,5 +1,9 @@
 # Speak_Docker
-本次是使用Python 3.9.0 開發的口說教學助理
+本次是使用Python 3.9.0 環境結合OpenAI開發的口說教學助理
+1.先決條件
+     具備OpenAI的key
+2.配著環境變數
+     
 
 ## Docker
 ### 方法一：構建映像檔並啟動Docker
