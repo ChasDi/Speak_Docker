@@ -1,14 +1,14 @@
 # Speak_Docker
 本次是使用Python 3.9.0 環境結合OpenAI開發的口說教學助理
-## 1.先決條件
+### 1.先決條件
 具備OpenAI的key
-## 2.配置
+### 2.配置
 首先，需要配置位於`AniTalker/.env`中，OpenAI的環境變數：
 ```bash
 OPEN_API_KEY="apikey"
 ```
 
-## Docker
+# Docker
 ### 方法一：構建映像檔並啟動Docker
 ```bsah
 docker compose up --build
@@ -22,7 +22,7 @@ docker build -t anitalker .
 ```bash
 docker run -p 5000:5000 anitalker
 ```
-### 本地構建
+# 本地構建
 ### 使用git clone方式將檔案拉到桌面
 ```bash
 git clone https://github.com/ChasDi/Speak_Docker.git
