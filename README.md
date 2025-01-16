@@ -1,5 +1,5 @@
 # Speak_Docker
-本次是使用Python 3.9.0 環境結合OpenAI開發的口說教學助理
+本次是使用Python 3.9.0 環境結合OpenAI開發的口說教學學堂
 ### 1.先決條件
 具備OpenAI的key
 ### 2.配置
