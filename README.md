@@ -30,10 +30,17 @@ OPEN_API_KEY="apikey"
 ```
 
 # 下載模型檔
+mac版本：
 ```bsah
 git clone https://huggingface.co/taocode/anitalker_ckpts
 mv anitalker_ckpts ./AniTalker
 mv anitalker_ckpts ckpts
+```
+windows版本：
+```bsah
+git clone https://huggingface.co/taocode/anitalker_ckpts
+ren anitalker_ckpts ./AniTalker
+ren anitalker_ckpts ckpts
 ```
 
 # Docker
