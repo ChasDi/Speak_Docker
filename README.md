@@ -39,8 +39,8 @@ mv anitalker_ckpts ckpts
 windows版本：
 ```bsah
 git clone https://huggingface.co/taocode/anitalker_ckpts
-ren anitalker_ckpts ./AniTalker
-ren anitalker_ckpts ckpts
+move anitalker_ckpts ./AniTalker
+move anitalker_ckpts ckpts
 ```
 
 # Docker
