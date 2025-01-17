@@ -11,6 +11,9 @@ git lfs install
 ```
 windows版本：
 官網下載https://git-lfs.com/
+```bash
+git lfs install
+```
 
 
 ### 2.本地構建
