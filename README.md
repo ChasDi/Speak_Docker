@@ -9,6 +9,9 @@ mac版本：
 brew install git-lfs
 git lfs install
 ```
+windows版本：
+官網下載https://git-lfs.com/
+
 
 ### 2.本地構建
 使用git clone方式將檔案拉到桌面
