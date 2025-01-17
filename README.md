@@ -2,6 +2,7 @@
 本次是使用Python 3.9.0 環境結合OpenAI開發的口說教學學堂
 ### 1.先決條件
 具備OpenAI的key
+
 首先，下載GIT LFS，並初始化
 mac版本：
 ```bash
