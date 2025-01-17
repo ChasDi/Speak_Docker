@@ -41,7 +41,9 @@ windows版本：
 git clone https://huggingface.co/taocode/anitalker_ckpts
 move anitalker_ckpts ./AniTalker
 #重新命名檔名
+cd AniTalker
 ren anitalker_ckpts ckpts
+cd ..
 ```
 
 # Docker
