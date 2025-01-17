@@ -40,8 +40,8 @@ windows版本：
 ```bsah
 git clone https://huggingface.co/taocode/anitalker_ckpts
 move anitalker_ckpts ./AniTalker
-#重新命名檔名
 cd AniTalker
+#重新命名檔名
 ren anitalker_ckpts ckpts
 cd ..
 ```
