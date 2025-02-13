@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../static/styles2.css">
+    <link rel="icon" href="../static/images/logo.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=LXGW+WenKai+Mono+TC&display=swap" rel="stylesheet">
+    <title>AI口說學堂</title>
+</head>
+
+<body>
+    <h1 class="title">AI口說學堂</h1>
+    <div class="container">
+        <div class="left-section">
+            <div class="box">
+                <video src="" id="video" style="display: none;"></video>
+                <img src="/static/images/aiface2.png" style="display: block;" alt="#">
+            </div>
+        </div>
+
+        <div class="right-section">
+            <div class="chat-container" id="chatContainer"></div>
+
+            <textarea class="text-area" id="messageInput" placeholder="在這裡輸入您的訊息..."></textarea>
+
+            <div class="button-group">
+                <button id="talkButton" class="btn btn-success">
+                    <i class="fas fa-microphone"></i>
+                    <span>開始說話</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="../static/index2.js"></script>
+</body>
+
+</html>

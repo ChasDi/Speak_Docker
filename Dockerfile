@@ -15,6 +15,10 @@ RUN apt-get update && apt-get install -y \
 # Copy the current directory contents into the container at /app
 COPY . /app
 
+# 更新 pip
+RUN pip install --no-cache-dir --upgrade pip
+
+
 # Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
@@ -22,4 +26,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 5000
 
 # Run the application
-CMD ["python", "./AniTalker/code/webgui_copy.py"]
+CMD ["python", "./AniTalker/code/webgui_copy2.py"]

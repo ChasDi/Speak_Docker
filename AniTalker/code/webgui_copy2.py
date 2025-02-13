@@ -37,28 +37,45 @@ import openai
 import gtts
 import tempfile
 from moviepy.editor import *
-from dotenv import load_dotenv
-from kokoro import KPipeline
-from IPython.display import display, Audio
-import soundfile as sf
+
 # template_path = os.path.join(os.getcwd(), 'AniTalker/code/templates')
-load_dotenv()
 
 app = Flask(__name__,static_folder='static')
 
 # CORS(app)
 CORS(app, resources={r"/api/*": {"origins": "http://127.0.0.1:5000"}})
-openai.api_key = os.getenv("OPEN_API_KEY")
+openai.api_key = "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"
 def getResponseFromGPT(text:str)->str:
+    
+    prompt = (
+            f"請仔細檢查用戶輸入的英文對話：\n"
+            f"請檢查以下句子是否存在語法錯誤，忽略標點符號和大小寫問題：\n"
+            f"1. 語法檢查：\n"
+            f"   - 詳細分析句子結構和語法規則\n" 
+            f"   - 如有錯誤，提供具體修正建議和詳細說明\n"
+            f"   - 如正確，給予肯定並說明句子優點\n\n"
+            f"2. 對話互動：\n"
+            f"   - 針對用戶輸入內容給予自然且相關的回應\n"
+            f"   - 鼓勵用戶繼續對話，提供話題延伸\n\n"
+            f"3. 回覆格式說明：\n"
+            f"   - 先提供完整的英文回覆\n"
+            f"   - 確保翻譯準確傳達原意\n"
+            f"   - 請用戶輸入的句子只判斷語法是否有錯，錯誤不包含標點符號錯誤和大小寫錯誤？如果有錯誤，請提供修正建議：\n\n{text};如果語法都正確，則繼續用聊天的方式對話，且要承接上下文。\n\n"
+            f"   - 請輸出json格式，包含英文回覆和繁體中文翻譯\n"
+            f"   - 範例：\n"
+            "      - {'en': 'Hello, how are you?', 'zh-TW': '你好，你怎麼樣？'}\n"
+        )
+    
+    
     return openai.ChatCompletion.create(
-        model="gpt-4o",  # 使用正確的 ChatCompletion 端點
+        model="gpt-4o",
 
+    
         messages=[
-            {"role": "system", "content": "你是一個可聊天英文文法檢查助理。"},
-            {"role": "user", "content": text}
+            {"role": "system", "content": "你是一個專業的英語教學助理，專注於語法檢查和口語對話練習，並進行自然的對話。"},
+            {"role": "user", "content": prompt}
         ]
     )["choices"][0]["message"]["content"]
-
 
 def tts(text:str)->str:
     audio = gtts.gTTS(text,lang="en-us")
@@ -393,7 +410,7 @@ default_values = {
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index2.html')
 
 
 @app.route('/file/<filename>')
@@ -410,8 +427,14 @@ def generate():
     json_data = request.get_json()
     uploaded_img = json_data.get("img")
     prompt = json_data.get("text")
-    res = getResponseFromGPT(prompt)
-    uploaded_audio = tts(res)
+    while True:
+        try:
+            res = json.loads(getResponseFromGPT(prompt))
+            break
+        except:
+            continue
+    
+    uploaded_audio = tts(res["en"])
 
     inputs={
         "uploaded_img":uploaded_img, 
@@ -435,27 +458,7 @@ def generate():
         print("Error: video_256 is None. No video was generated.")
     print(f"video_256: {video_256}, video_512: {video_512}, msg: {msg}")
 
-    return jsonify({"video_path":video_256.replace(os.getcwd(),"http://127.0.0.1:5000/file"),"msg":msg,"status":200,"result":res})
-
-# @app.route('/api/translate', methods=['POST'])
-# def translate():
-#     json_data = request.get_json()
-#     print(f"Text to be translated: {json_data}")
-
-#     # 調用翻譯 API
-#     target_url = 'https://api.mymemory.translated.net/get'
-#     params = {
-#         'q': json_data,
-#         'langpair': 'en|zh'
-#     }
-#     try:
-#         response = request.get(target_url, params=params)
-#         response_data = response.json()
-#         translated_text = response_data['responseData']['translatedText']
-#         return jsonify({"translatedText": translated_text})
-#     except Exception as e:
-#         return jsonify({"error": str(e)}), 500
-
+    return jsonify({"video_path":video_256.replace(os.getcwd(),"http://127.0.0.1:5000/file"),"msg":msg,"status":200,"result":res["en"]+"<br><br>"+res["zh-TW"]})
 
 
 if __name__ == "__main__":
