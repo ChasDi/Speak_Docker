@@ -37,6 +37,8 @@ import openai
 import gtts
 import tempfile
 from moviepy.editor import *
+from dotenv import load_dotenv
+load_dotenv()
 
 # template_path = os.path.join(os.getcwd(), 'AniTalker/code/templates')
 
@@ -44,7 +46,7 @@ app = Flask(__name__,static_folder='static')
 
 # CORS(app)
 CORS(app, resources={r"/api/*": {"origins": "http://127.0.0.1:5000"}})
-openai.api_key = "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"
+openai.api_key = os.getenv("OPEN_API_KEY")
 def getResponseFromGPT(text:str)->str:
     
     prompt = (
