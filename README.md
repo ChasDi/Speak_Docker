@@ -47,22 +47,7 @@ ren anitalker_ckpts ckpts
 cd ..
 ```
 
-# Docker
-### 方法一：構建映像檔並啟動Docker
-```bsah
-docker compose up --build
-```
-### 方法二：
-#### 2-1構建映像檔
-```bash
-docker build -t image_name .
-```
-#### 2-2啟動docker
-```bash
-docker run -p 5000:5000 image_name
-```
-
-
+# 本地運行
 ### 1.激活虛擬環境：
 1-1.建立虛擬環境
 ``` bash
@@ -88,3 +73,20 @@ pip install -r requirements.txt
 ```bash
 python ./AniTalker/code/webgui_copy2.py
 ```
+
+# Docker
+### 方法一：構建映像檔並啟動Docker
+```bsah
+docker compose up --build
+```
+### 方法二：
+#### 2-1構建映像檔
+```bash
+docker build -t image_name .
+```
+#### 2-2啟動docker
+```bash
+docker run -p 5000:5000 image_name
+```
+
+
