@@ -36,6 +36,7 @@ git clone https://huggingface.co/taocode/anitalker_ckpts
 mv anitalker_ckpts ./AniTalker
 cd ./AniTalker
 mv anitalker_ckpts ckpts
+cd ..
 ```
 windows版本：
 ```bsah
