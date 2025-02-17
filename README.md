@@ -34,6 +34,7 @@ mac版本：
 ```bsah
 git clone https://huggingface.co/taocode/anitalker_ckpts
 mv anitalker_ckpts ./AniTalker
+cd ./AniTalker
 mv anitalker_ckpts ckpts
 ```
 windows版本：
@@ -85,5 +86,5 @@ pip install -r requirements.txt
 ```
 ### 4.執行：
 ```bash
-python ./AniTalker/code/webgui_copy.py
+python ./AniTalker/code/webgui_copy2.py
 ```
